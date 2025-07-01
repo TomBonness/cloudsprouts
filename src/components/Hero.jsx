@@ -8,7 +8,7 @@ export default function Hero() {
           🌱 CloudSprouts
         </h1>
         <p className="text-green-800 text-lg md:text-xl leading-relaxed drop-shadow-sm">
-          Real-time insights from my garden. 
+           Real-time insights from my garden.
         </p>
       </div>
     </div>

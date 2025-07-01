@@ -3,7 +3,7 @@ export default function About() {
     <section className="p-6 flex flex-col items-center justify-center gap-6">
       {/* Overview */}
       <div className="bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-xl p-6 w-full max-w-4xl text-center">
-        <h2 className="text-3xl font-bold text-green-800 mb-4">🌱 About This Project</h2>
+        <h2 className="text-3xl font-bold text-green-800 mb-4">About This Project</h2>
         <p className="text-green-900 text-base mb-4">
           CloudSprouts is a full-stack IoT system that collects real-world temperature and humidity data from a sensor, transmits it to the cloud, and displays it in a responsive web dashboard. It blends embedded C, AWS infrastructure, and modern React design into a single seamless pipeline.
         </p>
