@@ -20,13 +20,13 @@ export default function WeeklyTrend() {
       try {
         const res = await fetch('https://87rsc7svn5.execute-api.us-east-1.amazonaws.com/prod/data?type=weekly');
         const json = await res.json();
-        setData(json.map((item) => ({
-          ...item,
-          temperature: item.payload?.temperature != null
-            ? (item.payload.temperature * 9) / 5 + 32
-            : null,
-          humidity: item.payload?.humidity,
-        })));
+        setData(
+          json.map((item) => ({
+            ...item,
+            temperature:
+              item.temperature != null ? (item.temperature * 9) / 5 + 32 : null,
+          }))
+        );
       } catch (err) {
         console.error('❌ Failed to fetch trend data:', err);
       } finally {
@@ -66,11 +66,26 @@ export default function WeeklyTrend() {
               />
               <Tooltip
                 labelStyle={{ color: '#065f46' }}
-                contentStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '12px' }}
+                contentStyle={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                  borderRadius: '12px',
+                }}
               />
               <CartesianGrid strokeDasharray="3 3" stroke="#cce7c2" />
-              <Line type="monotone" dataKey="temperature" stroke="#22c55e" strokeWidth={2} name="🌡️ Temp (°F)" />
-              <Line type="monotone" dataKey="humidity" stroke="#0ea5e9" strokeWidth={2} name="💧 Humidity (%)" />
+              <Line
+                type="monotone"
+                dataKey="temperature"
+                stroke="#22c55e"
+                strokeWidth={2}
+                name="🌡️ Temp (°F)"
+              />
+              <Line
+                type="monotone"
+                dataKey="humidity"
+                stroke="#0ea5e9"
+                strokeWidth={2}
+                name="💧 Humidity (%)"
+              />
             </LineChart>
           </ResponsiveContainer>
         )}

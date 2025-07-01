@@ -11,11 +11,12 @@ export default function CurrentReading() {
       try {
         const res = await fetch('https://87rsc7svn5.execute-api.us-east-1.amazonaws.com/prod/data');
         const json = await res.json();
-        const payload = json.payload;
-        if (payload?.temperature != null) {
-          payload.temperature = (payload.temperature * 9) / 5 + 32;
+
+        if (json?.temperature != null) {
+          json.temperature = (json.temperature * 9) / 5 + 32; // Convert to °F
         }
-        setData(payload);
+
+        setData(json);
       } catch (err) {
         console.error('❌ Failed to fetch current reading:', err);
       } finally {
@@ -28,7 +29,7 @@ export default function CurrentReading() {
 
   return (
     <section className="flex items-center justify-center p-6">
-      <div className="bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-xl p-6 w-full max-w-md text-center">
+      <div className="bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-xl p-6 w-full max-w-4xl text-center">
         <h2 className="text-2xl font-bold text-green-800 mb-4">Current Readings</h2>
         {loading ? (
           <p className="text-green-900/80">Loading...</p>

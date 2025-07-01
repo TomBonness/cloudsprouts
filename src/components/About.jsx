@@ -21,10 +21,17 @@ export default function About() {
       <div className="bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-lg p-6 w-full max-w-4xl text-left">
         <h3 className="text-2xl font-semibold text-green-800 mb-2">☁️ AWS Cloud Stack</h3>
         <ul className="list-disc list-inside text-green-900 text-base space-y-1">
-          <li><strong>AWS IoT Core:</strong> Accepts MQTT messages from the ESP32 and routes them using an IoT Rule.</li>
-          <li><strong>IoT Rule → DynamoDB:</strong> The rule triggers a Lambda function that writes the data to DynamoDB.</li>
-          <li><strong>Lambda + API Gateway:</strong> Custom endpoints let the frontend fetch the latest reading or aggregate a weekly trend.</li>
-          <li><strong>DynamoDB:</strong> Stores all sensor readings with efficient querying via a composite key (deviceID + timestamp).</li>
+          <li><strong>AWS IoT Core:</strong> The ESP32 publishes MQTT messages with sensor readings in JSON format.</li>
+          <li><strong>IoT Rule:</strong> Listens to the topic and triggers a Lambda function whenever new data arrives.</li>
+          <li><strong>Lambda Insert Function:</strong> Parses the message and writes it to DynamoDB using <code>deviceID</code> as the partition key and <code>timestamp</code> as the sort key.</li>
+          <li><strong>DynamoDB:</strong> Stores one flat record per reading, optimized for time-based queries without nesting.</li>
+          <li><strong>API Lambda:</strong> Another Lambda handles read access:
+            <ul className="ml-6 list-disc list-inside">
+              <li><code>/data</code> – returns the latest entry</li>
+              <li><code>/data?type=weekly</code> – returns up to one reading per hour for the past 7 days</li>
+            </ul>
+          </li>
+          <li><strong>API Gateway:</strong> Exposes these Lambda endpoints to the frontend securely over HTTPS.</li>
         </ul>
       </div>
 
