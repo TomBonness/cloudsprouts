@@ -53,7 +53,7 @@ export default function About() {
       <div className="bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-xl p-6 w-full max-w-4xl text-center">
         <h3 className="text-2xl font-semibold text-green-800 mb-2">📚 Summary</h3>
         <p className="text-green-900 text-base">
-          This project demonstrates an end-to-end system where embedded hardware talks to the cloud, and the cloud powers a modern, styled frontend. Everything from the ESP32 firmware to the AWS policies and React styling was built from scratch as a showcase of full-stack IoT capability.
+          This project demonstrates an end-to-end system where embedded hardware talks to the cloud, and the cloud powers a modern, styled frontend. Everything from the ESP32 firmware to the AWS policies and React styling was built from scratch as a showcase of embedded IoT, AWS, and full-stack capability.
         </p>
       </div>
     </section>

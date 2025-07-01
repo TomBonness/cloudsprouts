@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# 🌱 CloudSprouts: Real-Time Garden Insights
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+CloudSprouts is a full-stack IoT project that collects real-world temperature and humidity data from an ESP32 sensor, sends it to the cloud using MQTT, and displays it in a stylish, responsive web dashboard. Built to grow 🍃 from embedded C all the way to the frontend!
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🛠️ Tech Stack
 
-### `npm start`
+**👾 Embedded**
+- **ESP32 w/ ESP-IDF** — Collects data from a DHT11 sensor
+- **MQTT** — Sends JSON payloads (temp, humidity, timestamp) to AWS IoT Core
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**☁️ Cloud (AWS)**
+- **IoT Core** — Receives and routes MQTT messages
+- **Lambda** — Parses & stores readings
+- **DynamoDB** — Efficient, timestamped storage
+- **API Gateway** — Frontend fetches latest & weekly data
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**🖥️ Frontend**
+- **React (CRA)** — Core dashboard UI
+- **TailwindCSS** — Plant-inspired aesthetic with glassy effects
+- **Recharts** — Beautiful time-series data graphs
+- **Responsive Design** — Works on all screens and themes
 
-### `npm test`
+**🚀 Deployment**
+- **AWS Amplify** — CI/CD + Hosting
+- **Custom Domain + CDN** — HTTPS, fast, global
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🔧 Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 🌡️ View real-time temperature and humidity
+- 📈 Visualize weekly trends
+- 🕸️ End-to-end pipeline: sensor → cloud → UI
+- 📲 Mobile-ready and pretty
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📁 Project Structure
 
-### `npm run eject`
+```
+src/
+├── components/       # React UI components
+├── App.js            # Main app entry
+├── index.css         # Tailwind + base styles
+└── index.js          # ReactDOM renderer
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+public/
+├── index.html        # Template for CRA
+├── favicon.ico       # Custom favicon & PWA assets
+└── manifest.json     # Web app manifest
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ESP32 Firmware (separate repo recommended)
+- Uses C, MQTT, JSON encoding
+- Publishes to AWS IoT Core
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🌐 Live Demo
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[https://your-cloudsprouts-site-url.com](https://your-cloudsprouts-site-url.com)
