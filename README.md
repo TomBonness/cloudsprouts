@@ -57,7 +57,3 @@ ESP32 Firmware (separate repo recommended)
 ```
 
 ---
-
-## 🌐 Live Demo
-
-[https://your-cloudsprouts-site-url.com](https://your-cloudsprouts-site-url.com)

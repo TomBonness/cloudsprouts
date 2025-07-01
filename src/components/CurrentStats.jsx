@@ -11,7 +11,11 @@ export default function CurrentReading() {
       try {
         const res = await fetch('https://87rsc7svn5.execute-api.us-east-1.amazonaws.com/prod/data');
         const json = await res.json();
-        setData(json.payload);
+        const payload = json.payload;
+        if (payload?.temperature != null) {
+          payload.temperature = (payload.temperature * 9) / 5 + 32;
+        }
+        setData(payload);
       } catch (err) {
         console.error('❌ Failed to fetch current reading:', err);
       } finally {
@@ -31,7 +35,7 @@ export default function CurrentReading() {
         ) : data ? (
           <div className="space-y-2">
             <p className="text-lg text-green-900">
-              🌡️ Temp: <span className="font-semibold">{data.temperature}°C</span>
+              🌡️ Temp: <span className="font-semibold">{data.temperature?.toFixed(1)}°F</span>
             </p>
             <p className="text-lg text-green-900">
               💧 Humidity: <span className="font-semibold">{data.humidity}%</span>

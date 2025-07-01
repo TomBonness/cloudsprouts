@@ -22,7 +22,9 @@ export default function WeeklyTrend() {
         const json = await res.json();
         setData(json.map((item) => ({
           ...item,
-          temperature: item.payload?.temperature,
+          temperature: item.payload?.temperature != null
+            ? (item.payload.temperature * 9) / 5 + 32
+            : null,
           humidity: item.payload?.humidity,
         })));
       } catch (err) {
@@ -39,7 +41,7 @@ export default function WeeklyTrend() {
     <section className="p-6 flex items-center justify-center">
       <div className="bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-xl p-6 w-full max-w-4xl">
         <h2 className="text-2xl font-bold text-green-800 mb-4 text-center">
-          📈 Weekly Trend
+          📈 Weekly Data
         </h2>
         {loading ? (
           <p className="text-green-900/80 text-center">Loading...</p>
@@ -67,7 +69,7 @@ export default function WeeklyTrend() {
                 contentStyle={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '12px' }}
               />
               <CartesianGrid strokeDasharray="3 3" stroke="#cce7c2" />
-              <Line type="monotone" dataKey="temperature" stroke="#22c55e" strokeWidth={2} name="🌡️ Temp (°C)" />
+              <Line type="monotone" dataKey="temperature" stroke="#22c55e" strokeWidth={2} name="🌡️ Temp (°F)" />
               <Line type="monotone" dataKey="humidity" stroke="#0ea5e9" strokeWidth={2} name="💧 Humidity (%)" />
             </LineChart>
           </ResponsiveContainer>
