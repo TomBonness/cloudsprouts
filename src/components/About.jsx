@@ -40,11 +40,13 @@ export default function About() {
       </div>
 
       {/* Deployment */}
-      <div className="bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-xl p-6 w-full max-w-4xl text-left">
+      <div className="bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-lg p-6 w-full max-w-4xl text-left">
         <h3 className="text-2xl font-semibold text-green-800 mb-2">🚀 Hosting & Deployment</h3>
-        <p className="text-green-900 text-base">
-          The frontend will be hosted using <strong>AWS Amplify Hosting</strong> with GitHub integration. It will automatically rebuild and deploy the site on each push to the main branch. HTTPS, custom domain support, and a global CDN come included.
-        </p>
+        <ul className="list-disc list-inside text-green-900 text-base space-y-1">
+          <li><strong>AWS Amplify:</strong> Handles frontend hosting with automatic CI/CD via GitHub integration.</li>
+          <li><strong>Custom Domains:</strong> Supports HTTPS and routes through a global CDN for fast delivery.</li>
+          <li><strong>Auto Deploys:</strong> Every push to <code>main</code> triggers a rebuild and live deployment.</li>
+        </ul>
       </div>
 
       {/* Summary */}
