@@ -11,6 +11,29 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
+function CustomTooltip({ active, payload, label }) {
+  if (!active || !payload || !payload.length) return null;
+
+  const formattedDate = new Date(label).toLocaleString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  });
+
+  return (
+    <div className="bg-white p-3 rounded-xl shadow text-green-900">
+      <p className="font-semibold">{formattedDate}</p>
+      {payload.map((entry) => (
+        <p key={entry.dataKey}>
+          {entry.name}: {entry.value}
+        </p>
+      ))}
+    </div>
+  );
+}
+
 export default function WeeklyTrend() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -64,13 +87,7 @@ export default function WeeklyTrend() {
                 tick={{ fill: '#065f46', fontSize: 12 }}
                 domain={['auto', 'auto']}
               />
-              <Tooltip
-                labelStyle={{ color: '#065f46' }}
-                contentStyle={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                  borderRadius: '12px',
-                }}
-              />
+              <Tooltip content={<CustomTooltip />} />
               <CartesianGrid strokeDasharray="3 3" stroke="#cce7c2" />
               <Line
                 type="monotone"
