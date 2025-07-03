@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="p-6 mt-16 text-center text-green-700/70 text-sm">
       <div className="flex flex-col items-center gap-2">
         <div className="animate-spin-slow text-2xl">🪴</div>
-        <p>Thanks for checking out CloudSprouts.</p>
+        <p>Thanks for checking out CloudSprouts!</p>
         <p className="flex gap-4 justify-center text-green-800">
           <a
             href="https://www.linkedin.com/in/bonness/"
