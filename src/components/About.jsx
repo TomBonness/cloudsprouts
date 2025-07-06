@@ -25,13 +25,8 @@ export default function About() {
         <ul className="list-disc list-inside text-green-900 text-base space-y-1">
           <li><strong>AWS IoT Core:</strong> Receives MQTT messages from the ESP32 and routes them using an IoT rule.</li>
           <li><strong>Lambda Function (Write):</strong> Parses each payload and stores it in DynamoDB using <code>deviceID</code> and <code>timestamp</code>.</li>
-          <li><strong>DynamoDB:</strong> Optimized for time-series queries with a flat schema—ideal for real-time and historical lookups.</li>
-          <li><strong>Lambda Function (Read):</strong> Provides two endpoints:
-            <ul className="ml-6 list-disc list-inside">
-              <li><code>/data</code>: returns the most recent reading</li>
-              <li><code>/data?type=weekly</code>: returns one reading per hour for the past 7 days</li>
-            </ul>
-          </li>
+          <li><strong>DynamoDB:</strong> Optimized for time-series queries with a flat schema.</li>
+          <li><strong>Lambda Function (Read):</strong> Provides two endpoints returning real-time and historical data.</li>
           <li><strong>API Gateway:</strong> Publishes these endpoints to the frontend securely over HTTPS.</li>
         </ul>
       </div>
@@ -55,14 +50,6 @@ export default function About() {
           <li><strong>Custom Domains:</strong> Uses Route 53 and CloudFront to deliver the site over HTTPS with CDN caching.</li>
           <li><strong>Auto Deploys:</strong> Every push to <code>main</code> triggers a fresh build and deployment.</li>
         </ul>
-      </div>
-
-      {/* Summary */}
-      <div className="bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-xl p-6 w-full max-w-4xl text-center">
-        <h3 className="text-2xl font-semibold text-green-800 mb-2">📚 Summary</h3>
-        <p className="text-green-900 text-base">
-          From low-level sensor polling to a real-time dashboard in the browser, CloudSprouts showcases the full journey of IoT data. It's a complete system built from scratch—hardware, cloud, and frontend—all stitched together for a real-world use case.
-        </p>
       </div>
     </section>
   );
