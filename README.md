@@ -1,4 +1,4 @@
-# 🌿 CloudSprouts Monorepo
+# 🌿 CloudSprouts Project
 
 CloudSprouts is an end-to-end IoT project that delivers real-time insights from my garden. It combines an ESP32-based sensor with a cloud backend and a modern web dashboard to monitor temperature and humidity from anywhere.
 
@@ -8,8 +8,8 @@ CloudSprouts is an end-to-end IoT project that delivers real-time insights from 
 
 This monorepo contains two main components:
 
-1. **`iot-device/`** — Firmware for the ESP32 sensor node  
-2. **`dashboard/`** — Frontend web dashboard to visualize sensor data
+**`device/`** - Firmware for the ESP32 sensor node  
+**`dashboard/`** - Frontend web dashboard to visualize sensor data
 
 ---
 
@@ -20,10 +20,10 @@ This monorepo contains two main components:
 - Sends JSON data via **MQTT** to **AWS IoT Core**
 
 ### ☁️ Cloud
-- **AWS IoT Core** — Ingests MQTT data
-- **Lambda** — Parses and stores readings
-- **DynamoDB** — Time-series storage
-- **API Gateway** — REST endpoints for frontend
+- **AWS IoT Core** - Ingests MQTT data
+- **Lambda** - Parses and stores readings
+- **DynamoDB** - Time-series storage
+- **API Gateway** - REST endpoints for frontend
 
 ### 🖥️ Frontend
 - **React** with **TailwindCSS**
